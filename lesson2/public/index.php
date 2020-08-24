@@ -75,6 +75,7 @@ if (!empty($_COOKIE['user'])) {
 }
 
 $log->info(memory_get_usage());
+
 ?>
 
 <!doctype html>
