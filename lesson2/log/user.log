@@ -9,3 +9,8 @@
 [2020-08-24T09:58:57.858634+00:00] user-action.WARNING:  Неудачная попытка входа [] []
 [2020-08-24T09:58:58.996902+00:00] user-action.WARNING:  Неудачная попытка входа [] []
 [2020-08-24T09:59:07.831936+00:00] user-action.WARNING: fdfda Неудачная попытка входа [] []
+[2020-08-24T10:12:44.096008+00:00] user-action.NOTICE: qw is register [] []
+[2020-08-24T10:12:45.417987+00:00] user-action.NOTICE: qw is logout [] []
+[2020-08-24T10:12:47.373486+00:00] user-action.NOTICE: qw is enter [] []
+[2020-08-24T10:12:48.203818+00:00] user-action.NOTICE: qw is logout [] []
+[2020-08-24T10:13:07.580407+00:00] user-action.WARNING: qw Неудачная попытка входа [] []

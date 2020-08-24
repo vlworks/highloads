@@ -25,8 +25,10 @@ function isUser ($currentUser) {
         $user[] = explode('@', $elem);
     }
     foreach ($user as $elem) {
-        if ($elem[0] === $currentUser)
-        return in_array($currentUser, $elem);
+        if ($elem[0] === $currentUser) {
+            return true;
+        }
+
     }
 }
 function isCorrect ($currentUser, $password) {
@@ -63,6 +65,8 @@ if ($_REQUEST['submit'] === 'enter') {
         } else {
             echo "Имя пользователя занято";
         }
+    } else {
+        echo "Введите корректные данные";
     }
 }
 
