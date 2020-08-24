@@ -1,7 +1,19 @@
 <?php
 require_once('../vendor/autoload.php');
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// create a log channel memory
+$log = new Logger('memory');
+$log->pushHandler(new StreamHandler('../log/memory.log', Logger::INFO));
+
+//create a log channel user
+$userAction = new Logger('user-action');
+$userAction->pushHandler(new StreamHandler('../log/user.log', Logger::NOTICE));
+
 if ($_REQUEST['logout']) {
+    $userAction->notice($_COOKIE['user'] . ' is logout');
     setcookie('user', '', time());
     header('Location: /');
 }
@@ -34,8 +46,10 @@ function isCorrect ($currentUser, $password) {
 if ($_REQUEST['submit'] === 'enter') {
     if (isCorrect($_REQUEST['user'], $_REQUEST['password'])) {
         setcookie('user', $_REQUEST['user'], time()+60*60*24*30);
+        $userAction->notice($_REQUEST['user'] . ' is enter');
         header('Location: /');
     } else {
+        $userAction->warning($_REQUEST['user'] . " Неудачная попытка входа");
         echo "Введите корерктные данные";
     }
 } elseif ($_REQUEST['submit'] === 'register') {
@@ -44,6 +58,7 @@ if ($_REQUEST['submit'] === 'enter') {
             $str = $_REQUEST['user'] . '@' . hash('md5' ,$_REQUEST['password']) . PHP_EOL;
             file_put_contents('../db/user.txt', $str, FILE_APPEND);
             setcookie('user', $_REQUEST['user'], time()+60*60*24*30);
+            $userAction->notice($_REQUEST['user'] . ' is register');
             header("Location: /");
         } else {
             echo "Имя пользователя занято";
@@ -54,6 +69,8 @@ if ($_REQUEST['submit'] === 'enter') {
 if (!empty($_COOKIE['user'])) {
     include "./info.php";
 }
+
+$log->info(memory_get_usage());
 ?>
 
 <!doctype html>
