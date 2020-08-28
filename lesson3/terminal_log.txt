@@ -1,0 +1,404 @@
+[vlad@localhost ~]$ sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+[sudo] password for vlad:
+Loaded plugins: fastestmirror
+percona-release-latest.noarch.rpm                                                                                             |  19 kB  00:00:00
+Examining /var/tmp/yum-root-g3TsL0/percona-release-latest.noarch.rpm: percona-release-1.0-24.noarch
+Marking /var/tmp/yum-root-g3TsL0/percona-release-latest.noarch.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package percona-release.noarch 0:1.0-24 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================================================================
+ Package                             Arch                       Version                     Repository                                          Size
+=====================================================================================================================================================
+Installing:
+ percona-release                     noarch                     1.0-24                      /percona-release-latest.noarch                      30 k
+
+Transaction Summary
+=====================================================================================================================================================
+Install  1 Package
+
+Total size: 30 k
+Installed size: 30 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : percona-release-1.0-24.noarch                                                                                                     1/1
+* Enabling the Percona Original repository
+<*> All done!
+* Enabling the Percona Release repository
+<*> All done!
+The percona-release package now contains a percona-release script that can enable additional repositories for our newer products.
+
+For example, to enable the Percona Server 8.0 repository use:
+
+  percona-release setup ps80
+
+Note: To avoid conflicts with older product versions, the percona-release setup command may disable our original repository for some products.
+
+For more information, please visit:
+  https://www.percona.com/doc/percona-repo-config/percona-release.html
+
+  Verifying  : percona-release-1.0-24.noarch                                                                                                     1/1
+
+Installed:
+  percona-release.noarch 0:1.0-24
+
+Complete!
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+[vlad@localhost ~]$ sudo percona-release setup ps80
+* Disabling all Percona Repositories
+* Enabling the Percona Server 8.0 repository
+* Enabling the Percona Tools repository
+<*> All done!
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+[vlad@localhost ~]$ sudo yum install percona-server-server
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                                                                                          |  30 kB  00:00:00
+ * base: mirror.axelname.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.axelname.ru
+ * updates: mirror.axelname.ru
+base                                                                                                                          | 3.6 kB  00:00:00
+epel                                                                                                                          | 4.7 kB  00:00:00
+extras                                                                                                                        | 2.9 kB  00:00:00
+prel-release-x86_64                                                                                                           | 2.9 kB  00:00:00
+ps-80-release-x86_64                                                                                                          | 2.9 kB  00:00:00
+tools-release-x86_64                                                                                                          | 2.9 kB  00:00:00
+updates                                                                                                                       | 2.9 kB  00:00:00
+(1/6): epel/x86_64/updateinfo                                                                                                 | 1.0 MB  00:00:00
+(2/6): prel-release-x86_64/7/primary_db                                                                                       | 1.1 kB  00:00:00
+(3/6): tools-release-x86_64/7/primary_db                                                                                      |  76 kB  00:00:00
+(4/6): ps-80-release-x86_64/7/primary_db                                                                                      |  78 kB  00:00:00
+(5/6): updates/7/x86_64/primary_db                                                                                            | 4.5 MB  00:00:04
+(6/6): epel/x86_64/primary_db                                                                                                 | 6.9 MB  00:00:08
+Resolving Dependencies
+--> Running transaction check
+---> Package percona-server-server.x86_64 0:8.0.20-11.1.el7 will be installed
+--> Processing Dependency: percona-server-shared for package: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Processing Dependency: percona-server-client for package: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Processing Dependency: net-tools for package: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Running transaction check
+---> Package net-tools.x86_64 0:2.0-0.25.20131004git.el7 will be installed
+---> Package percona-server-client.x86_64 0:8.0.20-11.1.el7 will be installed
+---> Package percona-server-shared.x86_64 0:8.0.20-11.1.el7 will be installed
+--> Processing Dependency: percona-server-shared-compat for package: percona-server-shared-8.0.20-11.1.el7.x86_64
+--> Running transaction check
+---> Package mariadb-libs.x86_64 1:5.5.65-1.el7 will be obsoleted
+---> Package percona-server-shared-compat.x86_64 0:8.0.20-11.1.el7 will be obsoleting
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================================================================
+ Package                                     Arch                  Version                                 Repository                           Size
+=====================================================================================================================================================
+Installing:
+ percona-server-server                       x86_64                8.0.20-11.1.el7                         ps-80-release-x86_64                 56 M
+ percona-server-shared-compat                x86_64                8.0.20-11.1.el7                         ps-80-release-x86_64                1.2 M
+     replacing  mariadb-libs.x86_64 1:5.5.65-1.el7
+Installing for dependencies:
+ net-tools                                   x86_64                2.0-0.25.20131004git.el7                base                                306 k
+ percona-server-client                       x86_64                8.0.20-11.1.el7                         ps-80-release-x86_64                 12 M
+ percona-server-shared                       x86_64                8.0.20-11.1.el7                         ps-80-release-x86_64                1.4 M
+
+Transaction Summary
+=====================================================================================================================================================
+Install  2 Packages (+3 Dependent packages)
+
+Total download size: 70 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/5): net-tools-2.0-0.25.20131004git.el7.x86_64.rpm                                                                          | 306 kB  00:00:00
+warning: /var/cache/yum/x86_64/7/ps-80-release-x86_64/packages/percona-server-client-8.0.20-11.1.el7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 8507efa5: NOKEY
+Public key for percona-server-client-8.0.20-11.1.el7.x86_64.rpm is not installed
+(2/5): percona-server-client-8.0.20-11.1.el7.x86_64.rpm                                                                       |  12 MB  00:00:29
+(3/5): percona-server-shared-8.0.20-11.1.el7.x86_64.rpm                                                                       | 1.4 MB  00:00:03
+(4/5): percona-server-shared-compat-8.0.20-11.1.el7.x86_64.rpm                                                                | 1.2 MB  00:00:03
+(5/5): percona-server-server-8.0.20-11.1.el7.x86_64.rpm                                                                       |  56 MB  00:02:50
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                423 kB/s |  70 MB  00:02:50
+Retrieving key from file:///etc/pki/rpm-gpg/PERCONA-PACKAGING-KEY
+Importing GPG key 0x8507EFA5:
+ Userid     : "Percona MySQL Development Team (Packaging key) <mysql-dev@percona.com>"
+ Fingerprint: 4d1b b29d 63d9 8e42 2b21 13b1 9334 a25f 8507 efa5
+ Package    : percona-release-1.0-24.noarch (@/percona-release-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PERCONA-PACKAGING-KEY
+Is this ok [y/N]: н
+Is this ok [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : net-tools-2.0-0.25.20131004git.el7.x86_64                                                                                         1/6
+  Installing : percona-server-shared-compat-8.0.20-11.1.el7.x86_64                                                                               2/6
+  Installing : percona-server-shared-8.0.20-11.1.el7.x86_64                                                                                      3/6
+  Installing : percona-server-client-8.0.20-11.1.el7.x86_64                                                                                      4/6
+  Installing : percona-server-server-8.0.20-11.1.el7.x86_64                                                                                      5/6
+Percona Server is distributed with several useful UDF (User Defined Function) from Percona Toolkit.
+Run the following commands to create these functions:
+mysql -e "CREATE FUNCTION fnv1a_64 RETURNS INTEGER SONAME 'libfnv1a_udf.so'"
+mysql -e "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'"
+mysql -e "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'"
+See http://www.percona.com/doc/percona-server/8.0/management/udf_percona_toolkit.html for more details
+  Erasing    : 1:mariadb-libs-5.5.65-1.el7.x86_64                                                                                                6/6
+  Verifying  : percona-server-shared-8.0.20-11.1.el7.x86_64                                                                                      1/6
+  Verifying  : percona-server-shared-compat-8.0.20-11.1.el7.x86_64                                                                               2/6
+  Verifying  : percona-server-server-8.0.20-11.1.el7.x86_64                                                                                      3/6
+  Verifying  : percona-server-client-8.0.20-11.1.el7.x86_64                                                                                      4/6
+  Verifying  : net-tools-2.0-0.25.20131004git.el7.x86_64                                                                                         5/6
+  Verifying  : 1:mariadb-libs-5.5.65-1.el7.x86_64                                                                                                6/6
+
+Installed:
+  percona-server-server.x86_64 0:8.0.20-11.1.el7                        percona-server-shared-compat.x86_64 0:8.0.20-11.1.el7
+
+Dependency Installed:
+  net-tools.x86_64 0:2.0-0.25.20131004git.el7    percona-server-client.x86_64 0:8.0.20-11.1.el7    percona-server-shared.x86_64 0:8.0.20-11.1.el7
+
+Replaced:
+  mariadb-libs.x86_64 1:5.5.65-1.el7
+
+Complete!
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+[vlad@localhost log]$ sudo systemctl start mysqld
+[vlad@localhost log]$ systemctl status mysqld
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2020-08-28 14:19:54 MSK; 10s ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 1776 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 1856 (mysqld)
+   Status: "Server is operational"
+   CGroup: /system.slice/mysqld.service
+           └─1856 /usr/sbin/mysqld
+
+Aug 28 14:19:40 localhost.localdomain systemd[1]: Starting MySQL Server...
+Aug 28 14:19:54 localhost.localdomain systemd[1]: Started MySQL Server.
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+[vlad@localhost log]$ mysql_secure_installation
+
+
+[vlad@localhost log]$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.20-11 Percona Server (GPL), Release 11, Revision 5b5a5d2
+
+Copyright (c) 2009-2020 Percona LLC and/or its affiliates
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+mysql> create database highloads;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| highloads          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ПО SFTP закинул дамп на машину
+
+mysql> use highloads;
+Database changed
+
+mysql> \. /home/vlad/shop_dump.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 3 warnings (0.05 sec)
+
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 2 warnings (0.08 sec)
+
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 2 warnings (0.05 sec)
+
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 3 warnings (0.06 sec)
+
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 3 warnings (0.07 sec)
+
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 3 warnings (0.06 sec)
+
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 2 warnings (0.06 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 6 rows affected, 1 warning (0.10 sec)
+Records: 6  Duplicates: 0  Warnings: 1
+
+Query OK, 2 rows affected, 1 warning (0.11 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+Query OK, 2 rows affected, 1 warning (0.12 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+Query OK, 3 rows affected, 1 warning (0.12 sec)
+Records: 3  Duplicates: 0  Warnings: 1
+
+Query OK, 2 rows affected, 1 warning (0.11 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+Query OK, 2 rows affected, 1 warning (0.12 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.10 sec)
+Records: 1  Duplicates: 0  Warnings: 1
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+
+mysql> show tables;
++---------------------+
+| Tables_in_highloads |
++---------------------+
+| basket              |
+| category            |
+| feedback            |
+| goods               |
+| news                |
+| orders              |
+| users               |
++---------------------+
+7 rows in set (0.00 sec)
+
+mysql> DESC basket;
++------------+------+------+-----+---------+----------------+
+| Field      | Type | Null | Key | Default | Extra          |
++------------+------+------+-----+---------+----------------+
+| id         | int  | NO   | PRI | NULL    | auto_increment |
+| goods_id   | int  | NO   |     | NULL    |                |
+| session_id | text | NO   |     | NULL    |                |
++------------+------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> DESC users;
++-------+------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra          |
++-------+------+------+-----+---------+----------------+
+| id    | int  | NO   | PRI | NULL    | auto_increment |
+| login | text | NO   |     | NULL    |                |
+| pass  | text | NO   |     | NULL    |                |
+| hash  | text | NO   |     | NULL    |                |
++-------+------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> DESC news;
++----------+------+------+-----+---------+----------------+
+| Field    | Type | Null | Key | Default | Extra          |
++----------+------+------+-----+---------+----------------+
+| id       | int  | NO   | PRI | NULL    | auto_increment |
+| category | int  | NO   |     | NULL    |                |
+| prev     | text | NO   |     | NULL    |                |
+| text     | text | NO   |     | NULL    |                |
++----------+------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
